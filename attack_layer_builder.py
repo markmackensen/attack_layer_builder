@@ -1,5 +1,22 @@
+"""
+MITRE ATT&CK Navigator Layer Generator
+
+This script generates a JSON file for use with the MITRE ATT&CK Navigator.
+It allows users to input ATT&CK technique IDs either via a CSV file or manually,
+and sets a score for each technique. The output is a JSON file representing
+a layer for the ATT&CK Navigator.
+
+Usage:
+1. Run the script.
+2. Choose to input technique IDs via CSV file or manually.
+3. Input the desired score for the techniques.
+4. Save the generated JSON to a file.
+"""
+
 # Default value for MITRE ATT&CK Navigator version
 DEFAULT_ATTACK_VERSION = "14"
+
+# Imports
 
 import json  # Import the json module
 import tkinter as tk
@@ -8,9 +25,10 @@ import csv  # Import csv for handling CSV files
 import re  # Import the regular expressions module
 import logging
 
-# Set up logging
+# Set up logging for tracking actions and errors
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
 
+# Function to generate the JSON structure for the techniques
 def generate_json_structure(technique_ids, score):
     techniques = []
     for tid in technique_ids:
@@ -28,6 +46,7 @@ def generate_json_structure(technique_ids, score):
 
     return techniques
     
+# Function to read technique IDs from a CSV file
 def get_technique_ids_from_csv(file_path):
     try:
         with open(file_path, newline='', encoding='utf-8') as csvfile:
@@ -39,10 +58,12 @@ def get_technique_ids_from_csv(file_path):
         logging.error(f"Error reading CSV file: {e}")
         exit()
         
+# Function to check if a technique ID is valid
 def is_valid_technique_id(tid):
     """Check if the technique ID follows the pattern 'T####' or 'T####.0##'"""
     return re.match(r"T\d{4}(\.0\d{2})?$", tid) is not None
 
+# Function to prompt the user for technique IDs and validate them
 def get_valid_technique_ids_from_user():
     """Prompt the user for technique IDs and validate them"""
     while True:
@@ -54,6 +75,7 @@ def get_valid_technique_ids_from_user():
         else:
             print("One or more technique IDs are invalid. Please enter valid MITRE ATT&CK technique IDs (e.g., T1027).")
 
+# Main script execution starts here
 # Prompt for MITRE ATT&CK Navigator version with a default value
 attack_version_input = input(f"What version of MITRE ATT&CK Navigator are you using? (Enter a number between 4 and 14 or press Enter for default v{DEFAULT_ATTACK_VERSION}): ")
 if not attack_version_input.strip():
@@ -93,8 +115,9 @@ base_structure = {
     "techniques": []  # Empty techniques list, to be filled later
 }
 
+# Tkinter setup for file dialog
 root = tk.Tk()
-root.withdraw()  # Create a single Tkinter root instance and hide the main window
+root.withdraw()
 
 # User input for technique IDs or CSV file selection
 input_method = input("Enter '1' to select a CSV file or '2' to input technique IDs manually: ")
@@ -120,10 +143,10 @@ except ValueError:
     print("Invalid score input. Defaulting to 1.")
     score_input = 1  # Default score if input is not a valid integer
 
-# Get the techniques and update the base structure with them
+# Process and update the base structure with the techniques
 base_structure["techniques"] = generate_json_structure(technique_ids_input, score_input)
 
-# Convert the Python dictionary to a JSON-formatted string
+# Convert the Python dictionary to a JSON-formatted string and print it
 json_result = json.dumps(base_structure, indent=4)  # Makes the output more readable
 print(json_result)
 
@@ -139,6 +162,8 @@ if file_path:
     except Exception as e:
         logging.error(f"Error writing JSON file: {e}")
 
-root.destroy()  # Properly close the Tkinter window
+# Clean up Tkinter window
+root.destroy()
 
+# Final user prompt to conclude the script execution
 input("Press any key to continue...")
