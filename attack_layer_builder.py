@@ -1,3 +1,6 @@
+# Default value for MITRE ATT&CK Navigator version
+DEFAULT_ATTACK_VERSION = "14"
+
 import json  # Import the json module
 import tkinter as tk
 from tkinter import filedialog
@@ -51,18 +54,24 @@ def get_valid_technique_ids_from_user():
         else:
             print("One or more technique IDs are invalid. Please enter valid MITRE ATT&CK technique IDs (e.g., T1027).")
 
-# Prompt for ATT&CK Navigator version
-while True:
+# Prompt for MITRE ATT&CK Navigator version with a default value
+attack_version_input = input(f"What version of MITRE ATT&CK Navigator are you using? (Enter a number between 4 and 14 or press Enter for default v{DEFAULT_ATTACK_VERSION}): ")
+if not attack_version_input.strip():
+    attack_version_input = DEFAULT_ATTACK_VERSION
+else:
     try:
-        attack_version_input = int(input("What version of ATT&CK Navigator are you using? (Enter a number between 4 and 14): "))
-        if 4 <= attack_version_input <= 14:
-            break
-        else:
-            print("Please enter a number between 4 and 14.")
+        attack_version_input = int(attack_version_input)
+        if not 4 <= attack_version_input <= 14:
+            print(f"Invalid input. Using default version {DEFAULT_ATTACK_VERSION}.")
+            attack_version_input = DEFAULT_ATTACK_VERSION
     except ValueError:
-        print("Invalid input. Please enter a valid number.")
+        print(f"Invalid input. Using default version {DEFAULT_ATTACK_VERSION}.")
+        attack_version_input = DEFAULT_ATTACK_VERSION
 
-# Provided JSON structure with dynamic ATT&CK version
+# Ensure the version is a string for JSON structure
+attack_version_input = str(attack_version_input)
+
+# Provided JSON structure with dynamic MITRE ATT&CK version
 base_structure = {
     "name": "Custom ATT&CK Layer",
     "versions": {
