@@ -23,9 +23,13 @@ def generate_json_structure(technique_ids, score):
     return techniques
     
 def get_technique_ids_from_csv(file_path):
-    with open(file_path, newline='', encoding='utf-8') as csvfile:
-        reader = csv.reader(csvfile)
-        return [row[0] for row in reader]  # Assumes Technique IDs are in the first column
+    try:
+        with open(file_path, newline='', encoding='utf-8') as csvfile:
+            reader = csv.reader(csvfile)
+            return [row[0] for row in reader]  # Assumes Technique IDs are in the first column
+    except Exception as e:
+        print(f"Error reading CSV file: {e}")
+        exit()
         
 def is_valid_technique_id(tid):
     """Check if the technique ID follows the pattern 'T####' or 'T####.0##'"""
@@ -114,8 +118,11 @@ file_path = filedialog.asksaveasfilename(defaultextension=".json", filetypes=[("
 
 # Save the data if a file location is selected
 if file_path:
-    with open(file_path, 'w') as file:
-        file.write(json_result)
+    try:
+        with open(file_path, 'w') as file:
+            file.write(json_result)
+    except Exception as e:
+        print(f"Error writing JSON file: {e}")
 
 root.destroy()  # Properly close the Tkinter window
 
