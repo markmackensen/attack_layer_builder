@@ -3,7 +3,10 @@ import tkinter as tk
 from tkinter import filedialog
 import csv  # Import csv for handling CSV files
 import re  # Import the regular expressions module
+import logging
 
+# Set up logging
+logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
 
 def generate_json_structure(technique_ids, score):
     techniques = []
@@ -26,9 +29,11 @@ def get_technique_ids_from_csv(file_path):
     try:
         with open(file_path, newline='', encoding='utf-8') as csvfile:
             reader = csv.reader(csvfile)
-            return [row[0] for row in reader]  # Assumes Technique IDs are in the first column
+            technique_ids = [row[0] for row in reader]
+            logging.info(f"Successfully read {len(technique_ids)} techniques from CSV file.")
+            return technique_ids
     except Exception as e:
-        print(f"Error reading CSV file: {e}")
+        logging.error(f"Error reading CSV file: {e}")
         exit()
         
 def is_valid_technique_id(tid):
@@ -121,8 +126,9 @@ if file_path:
     try:
         with open(file_path, 'w') as file:
             file.write(json_result)
+            logging.info(f"JSON file saved successfully to {file_path}.")
     except Exception as e:
-        print(f"Error writing JSON file: {e}")
+        logging.error(f"Error writing JSON file: {e}")
 
 root.destroy()  # Properly close the Tkinter window
 
