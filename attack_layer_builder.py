@@ -2,6 +2,7 @@ import json  # Import the json module
 import tkinter as tk
 from tkinter import filedialog
 import csv  # Import csv for handling CSV files
+import re  # Import the regular expressions module
 
 
 def generate_json_structure(technique_ids, score):
@@ -25,6 +26,21 @@ def get_technique_ids_from_csv(file_path):
     with open(file_path, newline='', encoding='utf-8') as csvfile:
         reader = csv.reader(csvfile)
         return [row[0] for row in reader]  # Assumes Technique IDs are in the first column
+        
+def is_valid_technique_id(tid):
+    """Check if the technique ID follows the pattern 'T####' or 'T####.0##'"""
+    return re.match(r"T\d{4}(\.0\d{2})?$", tid) is not None
+
+def get_valid_technique_ids_from_user():
+    """Prompt the user for technique IDs and validate them"""
+    while True:
+        user_input = input("Enter technique IDs separated by commas: ")
+        technique_ids = [tid.strip() for tid in user_input.split(',')]
+
+        if all(is_valid_technique_id(tid) for tid in technique_ids):
+            return technique_ids
+        else:
+            print("One or more technique IDs are invalid. Please enter valid MITRE ATT&CK technique IDs (e.g., T1027).")
 
 # Prompt for ATT&CK Navigator version
 while True:
@@ -74,7 +90,7 @@ if input_method == '1':
         print("No file selected, exiting.")
         exit()
 elif input_method == '2':
-    technique_ids_input = input("Enter technique IDs separated by commas: ").split(',')
+    technique_ids_input = get_valid_technique_ids_from_user()
 else:
     print("Invalid input, exiting.")
     exit()
