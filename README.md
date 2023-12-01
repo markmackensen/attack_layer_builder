@@ -106,3 +106,10 @@ This project is not affiliated with or endorsed by MITRE.
 
 ### Contact Information
 For any queries or issues, please open an issue on the GitHub repository issue tracker.
+
+### Connect with Me
+
+I'm always open to interesting conversations and opportunities. Let's connect!
+
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-0077B5?style=flat&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/mark-mackensen/)
+
