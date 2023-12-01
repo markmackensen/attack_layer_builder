@@ -3,7 +3,7 @@
 ## Description
 The `attack_layer_builder` is a Python script specifically designed to augment the capabilities of threat intelligence analysts working within the MITRE ATT&CK framework. Its primary function is to facilitate the creation of "layer" files for the MITRE ATT&CK Navigator, a critical tool for visualizing and analyzing cyber threats.
 
-The script was designed for its ability to handle technique IDs in two convenient ways: either manually input by the user or imported via a CSV file. This flexibility allows analysts to work with data in the format most accessible to them. Once the technique IDs are entered, users can assign custom scores to each, reflecting their significance or impact based on the specific context of their analysis.
+The script was designed for its ability to handle technique IDs in two convenient ways: either imported via a CSV file or manually input by the user. This flexibility allows analysts to work with data in the format most accessible to them. Once the technique IDs are entered, users can assign custom scores to each, reflecting their significance or impact based on the specific context of their analysis.
 
 Ultimately, `attack_layer_builder` serves as a bridge between raw threat data and the visual, interactive platform of the ATT&CK Navigator. By streamlining this process, the script not only saves valuable time but also enhances the overall efficacy and clarity of threat intelligence assessments.
 
@@ -11,7 +11,7 @@ Ultimately, `attack_layer_builder` serves as a bridge between raw threat data an
 This script supports version 14 (default) of the MITRE ATT&CK framework, with an option to select earlier versions between 4 and 14. Users can input their desired version when prompted. Remember that only layers of the same domain and version can be merged, if you plan to use the "Create Layer from Other Layers" option in Navigator.
 
 ## Features
-- Generate ATT&CK Navigator layer JSON files using technique IDs from manual input or a CSV file.
+- Generate ATT&CK Navigator layer JSON files using technique IDs from a CSV file or manual input.
 - Assign custom scores to each technique, reflecting their relevance or impact.
 - User-friendly command-line interface, enhanced with Tkinter GUI for file operations.
 - Technique ID validation ensures input conforms to the MITRE ATT&CK format.
@@ -37,7 +37,7 @@ Run the script using Python:
 
 ```python attack_layer_builder.py```
 
-Follow the prompts to input technique IDs and score. The script supports both manual input and CSV file selection for technique IDs. After generating the JSON output, a file dialog allows you to save the result as a .json file, ready for upload to the ATT&CK Navigator.
+Follow the prompts to input technique IDs and score. The script supports both CSV file selection and manual input for technique IDs. After generating the JSON output, a file dialog allows you to save the result as a .json file, ready for upload to the ATT&CK Navigator.
 
 ### Screenshots
 
