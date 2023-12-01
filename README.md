@@ -38,24 +38,48 @@ Follow the prompts to input technique IDs and score. The script supports both ma
 ### Screenshots
 
 #### Initial Prompt
-![Initial Prompt](images/initial-prompt.PNG)
-*Figure 1: The initial command-line interface prompt where the user is expected to input the technique IDs, separated by commas.*
+![Initial Prompt](images/initial_prompt.png)
+*Figure 1: The initial prompt asking for the version of MITRE ATT&CK Navigator.*
 
-#### Technique IDs Entered
-![Technique IDs Entered](images/technique-ids-entered.PNG)
-*Figure 2: The CLI displaying entered technique IDs.*
+#### CSV or Technique ID Selection
+![CSV or Technique](images/csv_or_technique.png)
+*Figure 2: Prompt to choose between CSV file upload or manual technique ID input.*
 
-#### Score Prompt
-![Score Prompt](images/score-prompt.PNG)
-*Figure 3: The CLI prompt asking for a score to be assigned to the entered technique IDs.*
+#### CSV Selection
+![CSV Selection](images/csv_selection.png)
+*Figure 3: Dialog window for selecting a CSV file.*
+
+#### CSV Score Prompt
+![CSV Score Prompt](images/csv_score_prompt.png)
+*Figure 4: Prompt for entering a score after selecting a CSV file.*
 
 #### Save As Dialog
-![Save As Dialog](images/save-as-dialog.PNG)
-*Figure 4: The "Save As" dialog window for saving the JSON output file.*
+![Save As Dialog](images/save_as.png)
+*Figure 5: "Save As" dialog window for saving the generated JSON file.*
 
-#### JSON File Example
-![JSON File Example](images/json-file-example.PNG)
-*Figure 5: Example of the generated JSON file as it appears when opened.*
+#### Script Exit
+![Script Exit](images/exit.png)
+*Figure 6: Confirmation message displaying successful save and prompt to exit.*
+
+#### Manual Technique IDs Entered
+![Technique IDs Entered](images/technique_ids_entered.png)
+*Figure 7: Manual entry of technique IDs.*
+
+#### Technique Score Prompt
+![Technique Score Prompt](images/technique_score_prompt.png)
+*Figure 8: Prompt for entering a score for manually entered technique IDs.*
+
+#### Invalid Technique IDs
+![Invalid Technique IDs](images/invalid_technique_ids.png)
+*Figure 9: Error message displayed for invalid technique IDs.*
+
+#### Invalid Navigator Version
+![Invalid Navigator Version](images/invalid_navigator_version.png)
+*Figure 10: Error message displayed for invalid MITRE ATT&CK Navigator version input.*
+
+#### Invalid Score
+![Invalid Score](images/invalid_score.png)
+*Figure 11: Error message displayed for invalid score input.*
 
 ### Contributing
 Contributions are welcome! Before creating a pull request or issue, please check for existing issues or enhancement requests. If you have a suggestion that would make this better, please fork the repo and create a pull request, or open a new issue with the appropriate tag.
