@@ -57,9 +57,11 @@ Follow the prompts to input technique IDs and score. The script supports both ma
 ![Save As Dialog](images/save_as.png)
 *Figure 5: "Save As" dialog window for saving the generated JSON file.*
 
-#### Script Exit
-![Script Exit](images/exit.png)
-*Figure 6: Confirmation message displaying successful save and prompt to exit.*
+<p align="left">
+  <img src="images/exit.png" alt="Script Exit">
+  <br>
+  <em>Figure 6: Confirmation message displaying successful save and prompt to exit.</em>
+</p>
 
 #### Manual Technique IDs Entered
 ![Technique IDs Entered](images/technique_ids_entered.png)
