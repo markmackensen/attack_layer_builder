@@ -119,7 +119,7 @@ base_structure = {
 root = tk.Tk()
 root.withdraw()
 
-# User input for technique IDs or CSV file selection
+# User input for CSV file selection or technique IDs
 input_method = input("Enter '1' to select a CSV file or '2' to input technique IDs manually: ")
 
 if input_method == '1':
