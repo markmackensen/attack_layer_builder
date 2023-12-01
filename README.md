@@ -37,49 +37,59 @@ Follow the prompts to input technique IDs and score. The script supports both ma
 
 ### Screenshots
 
-#### Initial Prompt
+#### CSV File Selection Process
+This section illustrates the process of selecting a CSV file, from the initial prompt to saving the generated JSON file.
+  
+##### Initial Prompt
 ![Initial Prompt](images/initial_prompt.png)
 *Figure 1: The initial prompt asking for the version of MITRE ATT&CK Navigator.*
 
-#### CSV or Technique ID Selection
+##### CSV or Technique ID Selection
 ![CSV or Technique](images/csv_or_technique.png)
 *Figure 2: Prompt to choose between CSV file upload or manual technique ID input.*
 
-#### CSV Selection
+##### CSV Selection
 ![CSV Selection](images/csv_selection.png)
 *Figure 3: Dialog window for selecting a CSV file.*
 
-#### CSV Score Prompt
+##### CSV Score Prompt
 ![CSV Score Prompt](images/csv_score_prompt.png)
 *Figure 4: Prompt for entering a score after selecting a CSV file.*
 
-#### Save As Dialog
+##### Save As Dialog
 ![Save As Dialog](images/save_as.png)
 *Figure 5: "Save As" dialog window for saving the generated JSON file.*
 
+##### Script Exit
 <p align="left">
   <img src="images/exit.png" alt="Script Exit">
   <br>
   <em>Figure 6: Confirmation message displaying successful save and prompt to exit.</em>
 </p>
 
-#### Manual Technique IDs Entered
+#### Manual Technique ID Input
+This section shows the process when manually entering technique IDs and assigning a score.
+
+##### Manual Technique IDs Entered
 ![Technique IDs Entered](images/technique_ids_entered.png)
 *Figure 7: Manual entry of technique IDs.*
 
-#### Technique Score Prompt
+##### Technique Score Prompt
 ![Technique Score Prompt](images/technique_score_prompt.png)
 *Figure 8: Prompt for entering a score for manually entered technique IDs.*
 
-#### Invalid Technique IDs
+#### Error Handling and Invalid Entries
+This section highlights examples of error messages for invalid inputs.
+
+##### Invalid Technique IDs
 ![Invalid Technique IDs](images/invalid_technique_ids.png)
 *Figure 9: Error message displayed for invalid technique IDs.*
 
-#### Invalid Navigator Version
+##### Invalid Navigator Version
 ![Invalid Navigator Version](images/invalid_navigator_version.png)
 *Figure 10: Error message displayed for invalid MITRE ATT&CK Navigator version input.*
 
-#### Invalid Score
+##### Invalid Score
 ![Invalid Score](images/invalid_score.png)
 *Figure 11: Error message displayed for invalid score input.*
 
