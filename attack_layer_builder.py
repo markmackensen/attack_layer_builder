@@ -33,9 +33,9 @@ def generate_json_structure(technique_ids, score):
     techniques = []
     for tid in technique_ids:
         technique = {
-            "techniqueID": tid,
+            "techniqueID": tid.upper(),  # Convert to uppercase
             "color": "",
-            "score": score,  # Use the input score here
+            "score": score,
             "comment": "",
             "enabled": True,
             "metadata": [],
