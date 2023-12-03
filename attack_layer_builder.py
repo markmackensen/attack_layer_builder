@@ -46,22 +46,24 @@ def generate_json_structure(technique_ids, score):
 
     return techniques
     
-# Function to read technique IDs from a CSV file
-def get_technique_ids_from_csv(file_path):
-    try:
-        with open(file_path, newline='', encoding='utf-8') as csvfile:
-            reader = csv.reader(csvfile)
-            technique_ids = [row[0] for row in reader]
-            logging.info(f"Successfully read {len(technique_ids)} techniques from CSV file.")
-            return technique_ids
-    except Exception as e:
-        logging.error(f"Error reading CSV file: {e}")
-        exit()
+# Function to find and import technique IDs from a CSV file
+def find_and_import_technique_ids(csv_path):
+    technique_id_pattern = re.compile(r"[Tt]1\d{3}(\.0\d{2})?$")
+    techniques = []
+
+    with open(csv_path, newline='', encoding='utf-8') as csvfile:
+        reader = csv.reader(csvfile)
+        for row in reader:
+            for cell in row:
+                if technique_id_pattern.match(cell):
+                    techniques.append(cell)
+    return techniques
         
 # Function to check if a technique ID is valid
 def is_valid_technique_id(tid):
     """Check if the technique ID follows the pattern 'T1###' or 'T1###.0##'"""
     return re.match(r"T1\d{3}(\.0\d{2})?$", tid) is not None
+
 
 # Function to prompt the user for technique IDs and validate them
 def get_valid_technique_ids_from_user():
@@ -119,22 +121,26 @@ base_structure = {
 root = tk.Tk()
 root.withdraw()
 
-# User input for CSV file selection or technique IDs
-input_method = input("Enter '1' to select a CSV file or '2' to input technique IDs manually: ")
+# User input for CSV file selection or  technique IDs
+while True:
+    input_method = input("Enter '1' to select a CSV file or '2' to input technique IDs manually: ")
 
-if input_method == '1':
-    # GUI to select CSV file
-    file_path = filedialog.askopenfilename(filetypes=[("CSV files", "*.csv"), ("All files", "*.*")])
-    if file_path:
-        technique_ids_input = get_technique_ids_from_csv(file_path)
+    if input_method == '1':
+        # GUI to select CSV file
+        file_path = filedialog.askopenfilename(filetypes=[("CSV files", "*.csv"), ("All files", "*.*")])
+        if file_path:
+            technique_ids_input = find_and_import_technique_ids(file_path)
+            if technique_ids_input:
+                break
+            else:
+                print("No valid technique IDs found in the file. Please try again.")
+        else:
+            print("No file selected. Please try again.")
+    elif input_method == '2':
+        technique_ids_input = get_valid_technique_ids_from_user()
+        break
     else:
-        print("No file selected, exiting.")
-        exit()
-elif input_method == '2':
-    technique_ids_input = get_valid_technique_ids_from_user()
-else:
-    print("Invalid input, exiting.")
-    exit()
+        print("Invalid input. Please enter '1' or '2'.")
 
 # Prompt for score and ensure it's a valid integer
 try:
