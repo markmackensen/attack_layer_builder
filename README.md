@@ -12,6 +12,7 @@ This script supports version 14 (default) of the MITRE ATT&CK framework, with an
 
 ## Features
 - Generate ATT&CK Navigator layer JSON files using technique IDs from a CSV file or manual input.
+- CSV scanning: Automatically identifies and imports valid MITRE ATT&CK technique IDs from any part of the CSV file, offering greater flexibility and convenience.
 - Assign custom scores to each technique, reflecting their relevance or impact.
 - User-friendly command-line interface, enhanced with Tkinter GUI for file operations.
 - Technique ID validation ensures input conforms to the MITRE ATT&CK format.
@@ -37,7 +38,7 @@ Run the script using Python:
 
 ```python attack_layer_builder.py```
 
-Follow the prompts to input technique IDs and score. The script supports both CSV file selection and manual input for technique IDs. After generating the JSON output, a file dialog allows you to save the result as a .json file, ready for upload to the ATT&CK Navigator.
+Follow the prompts to input technique IDs and score. The script automatically scans entire CSV files for valid technique IDs, eliminating the need for prior formatting. It also supports manual input for technique IDs. After generating the JSON output, a file dialog allows you to save the result as a .json file, ready for upload to the ATT&CK Navigator.
 
 ### Screenshots
 
