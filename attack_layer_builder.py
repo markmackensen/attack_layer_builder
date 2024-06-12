@@ -14,7 +14,7 @@ Usage:
 """
 
 # Default value for MITRE ATT&CK Navigator version
-DEFAULT_ATTACK_VERSION = "14"
+DEFAULT_ATTACK_VERSION = "15"
 
 # Imports
 
@@ -85,7 +85,7 @@ if not attack_version_input.strip():
 else:
     try:
         attack_version_input = int(attack_version_input)
-        if not 4 <= attack_version_input <= 14:
+        if not 4 <= attack_version_input <= 15:
             print(f"Invalid input. Using default version {DEFAULT_ATTACK_VERSION}.")
             attack_version_input = DEFAULT_ATTACK_VERSION
     except ValueError:
