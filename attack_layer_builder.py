@@ -79,7 +79,7 @@ def get_valid_technique_ids_from_user():
 
 # Main script execution starts here
 # Prompt for MITRE ATT&CK Navigator version with a default value
-attack_version_input = input(f"What version of MITRE ATT&CK Navigator are you using? (Enter a number between 4 and 14 or press Enter for default v{DEFAULT_ATTACK_VERSION}): ")
+attack_version_input = input(f"What version of MITRE ATT&CK Navigator are you using? (Enter a number between 4 and 15 or press Enter for default v{DEFAULT_ATTACK_VERSION}): ")
 if not attack_version_input.strip():
     attack_version_input = DEFAULT_ATTACK_VERSION
 else:
