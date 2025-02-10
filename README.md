@@ -8,7 +8,7 @@ The script was designed for its ability to handle technique IDs in two convenien
 Ultimately, `attack_layer_builder` serves as a bridge between raw threat data and the visual, interactive platform of the ATT&CK Navigator. By streamlining this process, the script not only saves valuable time but also enhances the overall efficacy and clarity of threat intelligence assessments.
 
 ## Compatibility
-This script supports version 14 (default) of the MITRE ATT&CK framework, with an option to select earlier versions between 4 and 14. Users can input their desired version when prompted. Remember that only layers of the same domain and version can be merged, if you plan to use the "Create Layer from Other Layers" option in Navigator.
+This script supports version 16 (default) of the MITRE ATT&CK framework, with an option to select earlier versions between 4 and 16. Users can input their desired version when prompted. Remember that only layers of the same domain and version can be merged, if you plan to use the "Create Layer from Other Layers" option in Navigator.
 
 ## Features
 - Generate ATT&CK Navigator layer JSON files using technique IDs from a CSV file or manual input.
@@ -97,6 +97,32 @@ This section highlights examples of error messages for invalid inputs.
 ##### Invalid Score
 ![Invalid Score](images/invalid_score.png)
 *Figure 11: Error message displayed for invalid score input.*
+
+## attack_layer_deconstruction
+
+### Description
+`attack_layer_deconstruction.py` is a companion script designed to take an ATT&CK Navigator JSON export and convert it into a more human-readable CSV format. By extracting each technique's ID and score (and optionally other fields if you modify the script), it helps analysts rapidly view, sort, and share data outside the Navigator interface.
+
+### Usage
+1. Export your ATT&CK Navigator layer as a JSON file.
+2. Run the script:
+
+   ```python attack_layer_deconstruction.py```
+
+3. When prompted, select the JSON file you just exported.
+4. Specify where you want to save the resulting CSV file.
+5. The script outputs a CSV containing technique IDs and scores, sorted in descending order by score.
+
+### Key Features
+- Quickly parses all techniques from a Navigator export.
+- Sorts techniques by their assigned score for easier prioritization.
+- Outputs a CSV for straightforward sharing and analysis.
+
+### Known Limitations
+- Only includes techniques that have a score field.
+- Does not differentiate or aggregate subtechniques unless further modified.
+- Includes minimal error handling for malformed JSON.
+- Does not incorporate domain or version checks.
 
 ### Contributing
 Contributions are welcome! Before creating a pull request or issue, please check for existing issues or enhancement requests. If you have a suggestion that would make this better, please fork the repo and create a pull request, or open a new issue with the appropriate tag.
