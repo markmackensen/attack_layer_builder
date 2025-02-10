@@ -62,7 +62,7 @@ def find_and_import_technique_ids(csv_path):
 # Function to check if a technique ID is valid
 def is_valid_technique_id(tid):
     """Check if the technique ID follows the pattern 'T1###' or 'T1###.0##'"""
-    return re.match(r"T1\d{3}(\.0\d{2})?$", tid) is not None
+    return re.match(r"[Tt]1\d{3}(\.0\d{2})?$", tid) is not None
 
 
 # Function to prompt the user for technique IDs and validate them
